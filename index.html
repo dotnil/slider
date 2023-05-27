@@ -47,9 +47,9 @@ body {
 </style>
 
 <script>
-function swipeSlide(ind) {
+function swipeSlide(index) {
   const slider = document.querySelector('.slider')
-  const shift = -750 * ind;
+  const shift = -750 * index
 
   slider.style.transform=`translateX(${shift}px)`
 }
@@ -68,8 +68,8 @@ function insertSlides(options) {
 
   const width = options.width || 750
   const slidesHTML = options.slides.map((item) =>
-    `<div class='slider__item' style='background: ${item.color}; min-width: ${width}px'>${item.text}</div>`).join('');
-  slider.innerHTML = slidesHTML;
+    `<div class='slider__item' style='background: ${item.color}; min-width: ${width}px'>${item.text}</div>`).join('')
+  slider.innerHTML = slidesHTML
 }
 
 function validate(options) {
@@ -88,10 +88,10 @@ function initSlider(options) {
 }
 
 function slider(options) {
-  validate(options);
+  validate(options)
   initSlider(options)
-  insertSlides(options);
-  swipeSlides(options);
+  insertSlides(options)
+  swipeSlides(options)
 }
 
 const options = {
