@@ -34,8 +34,8 @@ function initSlider(options) {
 
   const width = options.width || 750
   const height = options.height || 400
-  wrapper.style.width = `${options.width}px`
-  wrapper.style.height = `${options.height}px`
+  wrapper.style.width = `${width}px`
+  wrapper.style.height = `${height}px`
 }
 
 function slider(options) {
