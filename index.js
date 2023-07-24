@@ -1,4 +1,9 @@
 import slider from './slider.js'
+import Person from './person.js'
+
+const person = new Person('Иван', 'Иванов')
+
+console.log(person.name())
 
 const options = {
   root: '#slider',
