@@ -1,46 +1,52 @@
-export default function slider(options) {
-  validate(options)
-  initSlider(options)
-  insertSlides(options)
-  swipeSlides(options)
-}
+export default class Slider {
+  constructor(root,  slides, width = 750, height = 400, delay = 2500) {
+    this.root = root
+    this.slides = slides
+    this.width = width
+    this.height = height
+    this.delay = delay
 
-function swipeSlide(index) {
-  const slider = document.querySelector('.slider')
-  const shift = -750 * index
+    this.validate()
+  }
 
-  slider.style.transform=`translateX(${shift}px)`
-}
+  validate() {
+    if (this.root == undefined) { throw 'The root is required.' }
+    if (this.slides == undefined) { throw 'The slides are required.' }
+  }
 
-function swipeSlides(options) {
-  const delay = options.delay || 2500
-  options.slides.forEach((currentElement, index) => {
-    setTimeout(() => {
-      swipeSlide(index)
-    }, index * delay)
-  })
-}
+  initSlider() {
+    const wrapper = document.querySelector(this.root)
+    wrapper.innerHTML = '<div class="slider"></div>'
 
-function insertSlides(options) {
-  const slider = document.querySelector('.slider')
+    const width = this.width
+    const height = this.height
+    wrapper.style.width = `${width}px`
+    wrapper.style.height = `${height}px`
+  }
 
-  const width = options.width || 750
-  const slidesHTML = options.slides.map((item) =>
-    `<div class='slider__item' style='background: ${item.color}; min-width: ${width}px'>${item.text}</div>`).join('')
-  slider.innerHTML = slidesHTML
-}
+  insertSlides() {
+    const slider = document.querySelector('.slider')
 
-function validate(options) {
-  if (options.root == undefined) { throw 'The root is required.' }
-  if (options.slides == undefined) { throw 'The slides are required.' }
-}
+    const slidesHTML = this.slides.map((item) =>
+      `<div class='slider__item' style='background: ${item.color}; min-width: ${this.width}px'>${item.text}</div>`).join('')
+    slider.innerHTML = slidesHTML
+  }
 
-function initSlider(options) {
-  const wrapper = document.querySelector(options.root)
-  wrapper.innerHTML = '<div class="slider"></div>'
+  swipeSlide(index) {
+    const slider = document.querySelector('.slider')
+    const shift = -750 * index
 
-  const width = options.width || 750
-  const height = options.height || 400
-  wrapper.style.width = `${width}px`
-  wrapper.style.height = `${height}px`
+    slider.style.transform=`translateX(${shift}px)`
+  }
+
+  swipeSlides() {
+    const delay = this.delay
+    const slides = this.slides
+
+    slides.forEach((currentElement, index) => {
+      setTimeout(() => {
+        this.swipeSlide(index)
+      }, index * delay)
+    })
+  }
 }

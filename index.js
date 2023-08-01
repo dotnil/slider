@@ -1,9 +1,4 @@
-import slider from './slider.js'
-import Person from './person.js'
-
-const person = new Person('Иван', 'Иванов')
-
-console.log(person.name())
+import Slider from './slider.js'
 
 const options = {
   root: '#slider',
@@ -73,4 +68,8 @@ const options = {
   ]
 }
 
-slider(options)
+const slider = new Slider(options.root, options.slides, options.width, options.height, options.delay)
+
+slider.initSlider()
+slider.insertSlides()
+slider.swipeSlides()
