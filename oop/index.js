@@ -1,4 +1,4 @@
-import slider from './slider.js'
+import Slider from './slider.js'
 
 const options = {
   root: '#slider',
@@ -68,4 +68,8 @@ const options = {
   ]
 }
 
-slider(options)
+const slider = new Slider(options.root, options.slides, options.width, options.height, options.delay)
+
+slider.initSlider()
+slider.insertSlides()
+slider.swipeSlides()
