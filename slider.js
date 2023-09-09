@@ -3,6 +3,8 @@ export default function slider(options) {
   initSlider(options)
   insertSlides(options)
   swipeSlides(options)
+
+  return null
 }
 
 function swipeSlide(index) {

@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import Slider from './oop/slider.js'
+import Slider from '../oop/slider.js'
 
 test('Slider instance', () => {
   const options = {
